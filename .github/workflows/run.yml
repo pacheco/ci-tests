@@ -6,6 +6,9 @@ jobs:
   run:
     name: Save stuff
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
     steps:
       - name: Generate something
         run: |
