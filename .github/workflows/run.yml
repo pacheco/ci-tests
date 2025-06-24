@@ -1,0 +1,23 @@
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  run:
+    name: Save stuff
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate something
+        run: |
+          TIMESTAMP=$(date +'%Y-%m-%d-%H%M')
+          mkdir -p benchmarks/$TIMESTAMP
+          echo $TIMESTAMP > benchmarks/$TIMESTAMP/index.html
+
+      - name: Publish to gh-pages subdir
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./benchmarks
+          destination_dir: benchmarks
+          keep_files: true
+
