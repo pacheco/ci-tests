@@ -23,4 +23,6 @@ jobs:
           publish_dir: ./benchmarks
           destination_dir: benchmarks
           keep_files: true
+          enable_jekyll: true
+
 
